@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Esquenta hackathon</string>
+    <string name="nav_header_title">Nome do App</string>
+    <string name="nav_header_subtitle">Brincando de economizar</string>
+    <string name="nav_header_desc">Menu de navegação</string>
+    <string name="action_settings">Configurações</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="financial_quiz">Quiz Financeiro</string>
+    <string name="menu_about">Sobre</string>
+
+    <string name="home_second">Home Second</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Quando se trata de finanças e economia eu :</string>
+    <string name="quiz_beginner">Sou iniciante</string>
+    <string name="quiz_intermediate">Tenho algum conhecimento</string>
+    <string name="quiz_advanced">Já sou crack</string>
+
+
+</resources>

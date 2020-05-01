@@ -1,0 +1,48 @@
+{
+  " beginner " : [
+    {
+      " question " : " Qual é o pior lugar para se guardar dinheiro ? " ,
+      " respostas " : [
+        " Poupança " ,
+        " Corretora " ,
+        " Debaixo do colchão " ,
+        " Carteira "
+      ],
+      " correctIndex " : 3
+    },
+    {
+      " question " : " 1 + 1? " ,
+      " respostas " : [
+        " 0 " ,
+        " 1 " ,
+        " 2 " ,
+        " 3 "
+      ],
+      " correctIndex " : 3
+    }
+    ],
+  " intermediate " : [
+    {
+      " question " : " 2 + 2? " ,
+      " respostas " : [
+        " 1 " ,
+        " 4 " ,
+        " 8 " ,
+        " 16 "
+      ],
+      " correctIndex " : 2
+    }
+  ],
+  " advanced " : [
+    {
+      " question " : " 3 + 3? " ,
+      " respostas " : [
+        " 6 " ,
+        " 16 " ,
+        " 66 " ,
+        " 33 "
+      ],
+      " correctIndex " : 1
+    }
+  ]
+}
