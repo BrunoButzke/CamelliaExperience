@@ -1,5 +1,6 @@
 package com.example.esquentahackathon.ui.quiz
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,71 +8,59 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.esquentahackathon.R
-import com.example.esquentahackathon.jsonFiles.FakeDataBase.Companion.ADVANCED
-import com.example.esquentahackathon.jsonFiles.FakeDataBase.Companion.BEGINNER
-import com.example.esquentahackathon.jsonFiles.FakeDataBase.Companion.INTERMEDIATE
 import com.example.esquentahackathon.ui.home.HomeFragment
-import kotlinx.android.synthetic.main.fragment_quiz.*
+import kotlinx.android.synthetic.main.fragment_done.*
 
-
-class QuizFragment : Fragment() {
+class QuizDoneFragment: Fragment() {
 
     private lateinit var viewModel: QuizViewModel
+    private var coinValue = 0
     private var oldCoinValue = 0
     private var money = 0
     private var state = 0
     private var clotheIndex = 0
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val bundle = this.arguments
         if (bundle != null) {
-            oldCoinValue = bundle.getInt("coinValue", 0)
+            coinValue = bundle.getInt("coinValue", 0)
+            oldCoinValue = bundle.getInt("oldCoinValue", 0)
             money = bundle.getInt("money", 0)
             state = bundle.getInt("state", 0)
             clotheIndex = bundle.getInt("clotheIndex", 0)
         }
         viewModel = ViewModelProviders.of(this).get(QuizViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_done, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupView()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupView() {
-        textView.text = context?.getText(R.string.quiz_title)
-        beginner.text = context?.getText(R.string.quiz_beginner)
-        intermediate.text = context?.getText(R.string.quiz_intermediate)
-        advanced.text = context?.getText(R.string.quiz_advanced)
 
-        beginner.setOnClickListener {
-            openFragment(QuizQuestionsFragment(), BEGINNER)
+        coins.text = "+ $coinValue"
+
+        tryAgain.setOnClickListener {
+            openFragment(QuizFragment())
         }
 
-        intermediate.setOnClickListener {
-            openFragment(QuizQuestionsFragment(), INTERMEDIATE)
-        }
-
-        advanced.setOnClickListener {
-            openFragment(QuizQuestionsFragment(), ADVANCED)
-        }
-
-        cancelButton.setOnClickListener {
+        homeButton.setOnClickListener {
             openFragment(HomeFragment())
         }
     }
 
-    private fun openFragment(nextFrag: Fragment, difficulty: String = BEGINNER) {
+    private fun openFragment(nextFrag: Fragment) {
         val arguments = Bundle()
-        arguments.putString("difficulty", difficulty)
-        arguments.putInt("coinValue", oldCoinValue)
+        arguments.putInt("coinValue", coinValue + oldCoinValue)
         // presets
         arguments.putInt("money", money)
-        arguments.putInt("state", state)
+        arguments.putInt("state", if(state == 3 || state == 4) 4 else 10)
         arguments.putInt("clotheIndex", clotheIndex)
         nextFrag.arguments = arguments;
 
